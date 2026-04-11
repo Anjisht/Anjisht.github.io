@@ -23,20 +23,16 @@ export default function Hero() {
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.8, ease: "easeOut" }}
                 >
-                    <p className="hero__greeting">👋 Hello, I'm</p>
+                    <h4 className="hero__greeting">Hello, I'm</h4>
 
-                    <h1 className="hero__name gradient-text">Anjisht</h1>
+                    <h2 className="hero__name gradient-text">Anjisht Amritanshu</h2>
 
                     <h2 className="hero__role">
                         <TypeAnimation
                             sequence={[
+                                "ML Researcher",
+                                2000,
                                 "Full-Stack Developer",
-                                2000,
-                                "MERN Stack Engineer",
-                                2000,
-                                "React.js Enthusiast",
-                                2000,
-                                "Problem Solver",
                                 2000,
                             ]}
                             wrapper="span"
