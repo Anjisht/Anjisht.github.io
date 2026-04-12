@@ -34,16 +34,23 @@ Object.entries(iconModules).forEach(([path, url]) => {
     if (nameSlug.toLowerCase() === 'css3') formattedName = 'CSS';
 
     if (skillCategoriesInit[categoryGroup]) {
+        let hash = 0;
+        for (let i = 0; i < nameSlug.length; i++) {
+            hash = nameSlug.charCodeAt(i) + ((hash << 5) - hash);
+        }
+        const pseudoRandomLevel = 70 + (Math.abs(hash) % 26); // Returns 70 - 95
+
         skillCategoriesInit[categoryGroup].skills.push({
             name: formattedName,
-            iconUrl: url
+            iconUrl: url,
+            level: pseudoRandomLevel
         });
     }
 });
 
 const skillCategories = Object.keys(categoryStyles).map(k => skillCategoriesInit[k]).filter(cat => cat.skills.length > 0);
 
-function SkillSquare({ name, iconUrl, delay }) {
+function SkillSquare({ name, level, iconUrl, delay }) {
     return (
         <motion.div
             className="skill-square"
@@ -54,6 +61,18 @@ function SkillSquare({ name, iconUrl, delay }) {
             <div className="skill-square__name">{name}</div>
             <div className="skill-square__icon">
                 <img src={iconUrl} alt={name} />
+            </div>
+            <div className="skill-square__progress">
+                <div className="skill-square__progress-bar">
+                    <motion.div
+                        className="skill-square__progress-fill"
+                        initial={{ width: 0 }}
+                        whileInView={{ width: `${level}%` }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 1, delay: delay + 0.2, ease: "easeOut" }}
+                    />
+                </div>
+                <div className="skill-square__progress-text">{level}%</div>
             </div>
         </motion.div>
     );
@@ -89,6 +108,7 @@ export default function Skills() {
                         <SkillSquare
                             key={skill.name}
                             name={skill.name}
+                            level={skill.level}
                             iconUrl={skill.iconUrl}
                             delay={Math.min(i * 0.05, 0.4)}
                         />
