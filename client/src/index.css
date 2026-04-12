@@ -22,22 +22,25 @@
   --transition-slow: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* ---- DARK THEME (default) ---- */
+/* ---- DARK THEME (default) — Prism-matched palette ---- */
 [data-theme="dark"] {
-  --bg-primary: #0a0a0f;
-  --bg-secondary: #111118;
-  --bg-card: #16161f;
-  --bg-card-hover: #1e1e2a;
-  --bg-glass: rgba(22, 22, 31, 0.7);
+  --bg-primary: #05050a;
+  --bg-secondary: #0d0d14;
+  --bg-card: #12121c;
+  --bg-card-hover: #1a1a28;
+  --bg-glass: rgba(12, 12, 20, 0.75);
 
-  --text-primary: #f0f0f5;
-  --text-secondary: #9898b0;
-  --text-muted: #5a5a70;
+  --text-primary: #f0f0ff;
+  --text-secondary: #9090b8;
+  --text-muted: #50507a;
 
-  --accent-primary: #7c6dfa;      /* violet */
-  --accent-secondary: #38bdf8;    /* sky blue */
-  --accent-tertiary: #f472b6;     /* pink */
-  --accent-gradient: linear-gradient(135deg, #7c6dfa 0%, #38bdf8 100%);
+  --accent-primary: #8b5cf6;
+  /* prism violet */
+  --accent-secondary: #22d3ee;
+  /* prism cyan */
+  --accent-tertiary: #f43f5e;
+  /* prism red */
+  --accent-gradient: linear-gradient(135deg, #8b5cf6 0%, #22d3ee 100%);
 
   --border: rgba(255, 255, 255, 0.08);
   --border-hover: rgba(124, 109, 250, 0.5);
@@ -77,7 +80,9 @@
 /* ============================================================
    RESET & BASE
    ============================================================ */
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
@@ -100,27 +105,49 @@ body {
 /* ============================================================
    TYPOGRAPHY
    ============================================================ */
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-family: var(--font-display);
   font-weight: 700;
   line-height: 1.2;
   color: var(--text-primary);
 }
 
-h1 { font-size: clamp(2.5rem, 6vw, 5rem); }
-h2 { font-size: clamp(1.8rem, 4vw, 3rem); }
-h3 { font-size: clamp(1.2rem, 2.5vw, 1.75rem); }
+h1 {
+  font-size: clamp(2.5rem, 6vw, 5rem);
+}
 
-p { color: var(--text-secondary); line-height: 1.7; }
+h2 {
+  font-size: clamp(1.8rem, 4vw, 3rem);
+}
+
+h3 {
+  font-size: clamp(1.2rem, 2.5vw, 1.75rem);
+}
+
+p {
+  color: var(--text-secondary);
+  line-height: 1.7;
+}
 
 a {
   color: var(--accent-primary);
   text-decoration: none;
   transition: var(--transition);
 }
-a:hover { color: var(--accent-secondary); }
 
-img { max-width: 100%; display: block; }
+a:hover {
+  color: var(--accent-secondary);
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
 
 /* ============================================================
    LAYOUT UTILITIES
@@ -178,6 +205,7 @@ img { max-width: 100%; display: block; }
   color: #fff;
   box-shadow: 0 4px 24px rgba(124, 109, 250, 0.35);
 }
+
 .btn-primary:hover {
   transform: translateY(-2px);
   box-shadow: 0 8px 36px rgba(124, 109, 250, 0.5);
@@ -189,6 +217,7 @@ img { max-width: 100%; display: block; }
   color: var(--accent-primary);
   border: 2px solid var(--accent-primary);
 }
+
 .btn-outline:hover {
   background: var(--accent-primary);
   color: #fff;
@@ -206,6 +235,7 @@ img { max-width: 100%; display: block; }
   transition: var(--transition);
   box-shadow: var(--shadow-sm);
 }
+
 .card:hover {
   background: var(--bg-card-hover);
   border-color: var(--border-hover);
@@ -251,8 +281,14 @@ img { max-width: 100%; display: block; }
 /* ============================================================
    SCROLLBAR
    ============================================================ */
-::-webkit-scrollbar { width: 6px; }
-::-webkit-scrollbar-track { background: var(--bg-primary); }
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-primary);
+}
+
 ::-webkit-scrollbar-thumb {
   background: var(--accent-primary);
   border-radius: 3px;
@@ -270,27 +306,58 @@ img { max-width: 100%; display: block; }
    ANIMATIONS
    ============================================================ */
 @keyframes fadeInUp {
-  from { opacity: 0; transform: translateY(30px); }
-  to   { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 @keyframes fadeIn {
-  from { opacity: 0; }
-  to   { opacity: 1; }
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
 }
 
 @keyframes float {
-  0%, 100% { transform: translateY(0px); }
-  50%       { transform: translateY(-12px); }
+
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(-12px);
+  }
 }
 
 @keyframes pulse-glow {
-  0%, 100% { box-shadow: 0 0 20px rgba(124, 109, 250, 0.3); }
-  50%       { box-shadow: 0 0 50px rgba(124, 109, 250, 0.7); }
+
+  0%,
+  100% {
+    box-shadow: 0 0 20px rgba(124, 109, 250, 0.3);
+  }
+
+  50% {
+    box-shadow: 0 0 50px rgba(124, 109, 250, 0.7);
+  }
 }
 
-.animate-fade-in-up { animation: fadeInUp 0.7s ease both; }
-.animate-float { animation: float 4s ease-in-out infinite; }
+.animate-fade-in-up {
+  animation: fadeInUp 0.7s ease both;
+}
+
+.animate-float {
+  animation: float 4s ease-in-out infinite;
+}
 
 /* ============================================================
    RESPONSIVE GRID HELPERS
@@ -300,6 +367,7 @@ img { max-width: 100%; display: block; }
   grid-template-columns: repeat(2, 1fr);
   gap: 1.5rem;
 }
+
 .grid-3 {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -307,9 +375,19 @@ img { max-width: 100%; display: block; }
 }
 
 @media (max-width: 768px) {
-  .grid-2, .grid-3 { grid-template-columns: 1fr; }
-  .section { padding: 4rem 0; }
+
+  .grid-2,
+  .grid-3 {
+    grid-template-columns: 1fr;
+  }
+
+  .section {
+    padding: 4rem 0;
+  }
 }
+
 @media (max-width: 1024px) {
-  .grid-3 { grid-template-columns: repeat(2, 1fr); }
+  .grid-3 {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }

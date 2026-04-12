@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import AOS from "aos";
+import profileImg from "../assets/4.png";
 import "./About.css";
 
 export default function About() {
@@ -19,8 +20,7 @@ export default function About() {
                     <div className="about__photo-wrap" data-aos="fade-right">
                         <div className="about__photo-ring">
                             <div className="about__photo">
-                                {/* Replace src with actual photo in public/ */}
-                                <div className="about__photo-placeholder">A</div>
+                                <img src={profileImg} alt="Anjisht" className="about__photo-img" />
                             </div>
                         </div>
                         <div className="about__status-badge">
@@ -35,43 +35,32 @@ export default function About() {
                         </h3>
 
                         <p className="about__bio">
-                            I'm a full-stack developer passionate about creating seamless digital
-                            experiences. I specialize in the MERN stack — building scalable
-                            React frontends backed by Node.js/Express APIs and MongoDB databases.
+                            I'm a CS undergrad with a split personality — half builder, half mathematician.
+                            On the engineering side, I specialize in full-stack development (MERN stack) and
+                            applied ML, I've trained multilingual transformers, built RAG pipelines, and deployed end-to-end
+                            models.
                         </p>
 
                         <p className="about__bio">
-                            Currently pursuing my degree in Computer Science. When I'm not writing
-                            code, I explore machine learning, contribute to open-source projects,
-                            and participate in hackathons.
+                            On the research side, I'm deeply interested in reinforcement learning and the
+                            mathematics that underpins intelligent systems — I'm currently studying number theory and stochastic processes,
+                            not because I have to, but because I find the formalism genuinely beautiful.
+                        </p>
+                        <p className="about__bio">
+                            When I'm not writing code, I'm probably working out, out on a run,
+                            buried in a novel, or lost with my acoustic guitar.
                         </p>
 
                         <div className="about__meta">
                             <div className="about__meta-item">
                                 <span className="about__meta-icon">📍</span>
-                                <span>India</span>
+                                <span>Jaipur, Rajasthan, India</span>
                             </div>
                             <div className="about__meta-item">
                                 <span className="about__meta-icon">🎓</span>
-                                <span>CS Student</span>
+                                <span>Third year CS Student</span>
                             </div>
-                            <div className="about__meta-item">
-                                <span className="about__meta-icon">💼</span>
-                                <span>Available for Internships</span>
-                            </div>
-                        </div>
 
-                        <div className="about__stats">
-                            {[
-                                { label: "Projects Built", value: "10+" },
-                                { label: "Technologies", value: "15+" },
-                                { label: "Hackathons", value: "3+" },
-                            ].map((stat) => (
-                                <div key={stat.label} className="about__stat card">
-                                    <span className="about__stat-value gradient-text">{stat.value}</span>
-                                    <span className="about__stat-label">{stat.label}</span>
-                                </div>
-                            ))}
                         </div>
                     </div>
                 </div>
