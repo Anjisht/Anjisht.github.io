@@ -78,6 +78,37 @@ function SkillSquare({ name, level, iconUrl, delay }) {
     );
 }
 
+const softSkillsData = [
+    { name: "Communication", level: 90 },
+    { name: "Problem Solving", level: 95 },
+    { name: "Teamwork", level: 92 },
+    { name: "Time Management", level: 85 },
+    { name: "Adaptability", level: 88 },
+    { name: "Critical Thinking", level: 94 },
+    { name: "Networking", level: 80 },
+    { name: "Presentation", level: 85 },
+];
+
+function SoftSkillBar({ name, level, delay }) {
+    return (
+        <div className="soft-skill">
+            <div className="soft-skill__info">
+                <span className="soft-skill__name">{name}</span>
+                <span className="soft-skill__percentage">{level}%</span>
+            </div>
+            <div className="soft-skill__progress-bar">
+                <motion.div
+                    className="soft-skill__progress-fill"
+                    initial={{ width: 0 }}
+                    whileInView={{ width: `${level}%` }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 1, delay: delay, ease: "easeOut" }}
+                />
+            </div>
+        </div>
+    );
+}
+
 export default function Skills() {
     const [activeTab, setActiveTab] = useState(skillCategories[0]?.id || "");
     const activeCategory = skillCategories.find(cat => cat.id === activeTab) || skillCategories[0];
@@ -88,7 +119,7 @@ export default function Skills() {
         <section className="skills section" id="skills">
             <div className="skills__container">
                 <div className="section-title" data-aos="fade-up">
-                    <h2>Skills</h2>
+                    <h2>Technological Skills</h2>
                 </div>
 
                 <div className="skills__tabs" data-aos="fade-up" data-aos-delay="100">
@@ -111,6 +142,21 @@ export default function Skills() {
                             level={skill.level}
                             iconUrl={skill.iconUrl}
                             delay={Math.min(i * 0.05, 0.4)}
+                        />
+                    ))}
+                </div>
+
+                <div className="section-title soft-skills-title" data-aos="fade-up" style={{ marginTop: '4rem' }}>
+                    <h2>Soft Skills</h2>
+                </div>
+
+                <div className="soft-skills__grid" data-aos="fade-up" data-aos-delay="100">
+                    {softSkillsData.map((skill, i) => (
+                        <SoftSkillBar
+                            key={skill.name}
+                            name={skill.name}
+                            level={skill.level}
+                            delay={i * 0.1}
                         />
                     ))}
                 </div>
