@@ -4,8 +4,7 @@ A full-stack MERN portfolio website showcasing projects, skills, experience, and
 
 ## 🚀 Live Demo
 
-- **Frontend:** [https://anjisht.github.io](https://anjisht.github.io) *(update after deployment)*
-- **Backend API:** *(update after deployment on Render/Railway)*
+Live Project Link: https://anjisht-github-io.vercel.app/
 
 ## 🛠 Tech Stack
 
