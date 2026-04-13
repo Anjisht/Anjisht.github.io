@@ -11,11 +11,13 @@ export default function Contact() {
         setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
     };
 
+    const API_URL = import.meta.env.VITE_API_URL || "";
+
     const handleSubmit = async (e) => {
         e.preventDefault();
         setStatus("loading");
         try {
-            await axios.post("/api/contact", form);
+            await axios.post(`${API_URL}/api/contact`, form);
             setStatus("success");
             setForm({ name: "", email: "", message: "" });
             setTimeout(() => {

@@ -4,8 +4,10 @@ import Prism from "./Prism.jsx";
 import "./Hero.css";
 
 export default function Hero() {
+    const API_URL = import.meta.env.VITE_API_URL || "";
+
     const downloadCV = (format) => {
-        window.open(`/api/cv/${format}`, "_blank");
+        window.open(`${API_URL}/api/cv/${format}`, "_blank");
     };
 
     return (
