@@ -13,30 +13,38 @@ export const submitContact = async (req, res) => {
         // Save to MongoDB
         const newContact = await Contact.create({ name, email, message });
 
-        // Optional: send email notification via Nodemailer
-        if (process.env.EMAIL_USER && process.env.EMAIL_PASS) {
-            const transporter = nodemailer.createTransport({
-                service: "gmail",
-                auth: {
-                    user: process.env.EMAIL_USER,
-                    pass: process.env.EMAIL_PASS,
-                },
-            });
-
-            await transporter.sendMail({
-                from: process.env.EMAIL_USER,
-                to: process.env.EMAIL_USER,
-                subject: `New Portfolio Message from ${name}`,
-                html: `<p><strong>Name:</strong> ${name}</p>
-               <p><strong>Email:</strong> ${email}</p>
-               <p><strong>Message:</strong><br/>${message}</p>`,
-            });
-        }
-
+        // Immediately resolve the API response so the user doesn't hang!
         res.status(201).json({ success: true, data: newContact });
+
+        // Optional: send email notification via Nodemailer (Runs silently in background now)
+        if (process.env.EMAIL_USER && process.env.EMAIL_PASS) {
+            try {
+                const transporter = nodemailer.createTransport({
+                    service: "gmail",
+                    auth: {
+                        user: process.env.EMAIL_USER,
+                        pass: process.env.EMAIL_PASS,
+                    },
+                });
+
+                await transporter.sendMail({
+                    from: process.env.EMAIL_USER,
+                    to: process.env.EMAIL_USER,
+                    subject: `New Portfolio Message from ${name}`,
+                    html: `<p><strong>Name:</strong> ${name}</p>
+                           <p><strong>Email:</strong> ${email}</p>
+                           <p><strong>Message:</strong><br/>${message}</p>`,
+                });
+            } catch (mailErr) {
+                console.error("Silent Nodemailer Error - Email failed to send, but MongoDB saved it:", mailErr.message);
+            }
+        }
     } catch (err) {
         console.error("Contact form error:", err);
-        res.status(500).json({ error: "Server error. Please try again later." });
+        // Only trigger manual 500 error mapping if MongoDB entirely fails
+        if (!res.headersSent) {
+            res.status(500).json({ error: "Server error. Please try again later." });
+        }
     }
 };
 
