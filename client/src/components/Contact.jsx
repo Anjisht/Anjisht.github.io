@@ -78,7 +78,7 @@ export default function Contact() {
                                         </svg>
                                         <span className="contact-list-label">LINKEDIN</span>
                                     </div>
-                                    <a href="https://linkedin.com/in/anjisht" target="_blank" rel="noopener noreferrer" className="contact-list-value">
+                                    <a href="https://www.linkedin.com/in/anjisht-amritanshu-2b46b8285/" target="_blank" rel="noopener noreferrer" className="contact-list-value">
                                         linkedin.com/in/anjisht
                                     </a>
                                 </div>
