@@ -53,29 +53,26 @@ const skillCategories = Object.keys(categoryStyles).map(k => skillCategoriesInit
 function SkillSquare({ name, level, iconUrl, delay }) {
     return (
         <motion.div
-            className="skill-card-modern"
+            className="skill-square"
             initial={{ opacity: 0, scale: 0.9, y: 10 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             transition={{ duration: 0.3, delay }}
         >
-            <div className="skill-card-modern__glow"></div>
-            <div className="skill-card-modern__content-wrap">
-                <div className="skill-card-modern__name">{name}</div>
-                <div className="skill-card-modern__icon">
-                    <img src={iconUrl} alt={name} />
+            <div className="skill-square__name">{name}</div>
+            <div className="skill-square__icon">
+                <img src={iconUrl} alt={name} />
+            </div>
+            <div className="skill-square__progress">
+                <div className="skill-square__progress-bar">
+                    <motion.div
+                        className="skill-square__progress-fill"
+                        initial={{ width: 0 }}
+                        whileInView={{ width: `${level}%` }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 1, delay: delay + 0.2, ease: "easeOut" }}
+                    />
                 </div>
-                <div className="skill-card-modern__progress">
-                    <div className="skill-card-modern__progress-bar">
-                        <motion.div
-                            className="skill-card-modern__progress-fill"
-                            initial={{ width: 0 }}
-                            whileInView={{ width: `${level}%` }}
-                            viewport={{ once: true }}
-                            transition={{ duration: 1, delay: delay + 0.2, ease: "easeOut" }}
-                        />
-                    </div>
-                    <div className="skill-card-modern__progress-text">{level}%</div>
-                </div>
+                <div className="skill-square__progress-text">{level}%</div>
             </div>
         </motion.div>
     );
