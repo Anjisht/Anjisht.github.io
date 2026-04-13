@@ -1,40 +1,39 @@
 import { motion } from "framer-motion";
+import deepLearningIcon from "../assets/certification icons/deeplearning.png";
+import uMichiganIcon from "../assets/certification icons/umichigan.png";
+import ibmIcon from "../assets/certification icons/ibm.png";
+import redHatIcon from "../assets/certification icons/redhat.png";
 import "./Certifications.css";
 
 const certifications = [
     {
-        title: "React - The Complete Guide",
-        issuer: "Udemy / Coursera",
+        title: "Neural Network and Deep Learning",
+        issuer: "DeepLearning.AI",
         year: "2024",
-        icon: "⚛️",
-        link: "#",
+        iconUrl: deepLearningIcon,
+        link: "https://coursera.org/share/93d015423ff78017d5f449bf2717ca6f",
     },
     {
-        title: "Node.js & Express Bootcamp",
-        issuer: "Udemy",
+        title: "Python Data Structures",
+        issuer: "University of Michigan",
         year: "2024",
-        icon: "🟢",
-        link: "#",
+        iconUrl: uMichiganIcon,
+        link: "https://coursera.org/share/0a7193ba16b496f49b2c091df69a2814",
     },
     {
-        title: "MongoDB for Developers",
-        issuer: "MongoDB University",
-        year: "2023",
-        icon: "🍃",
-        link: "#",
+        title: "Tools for Data Science",
+        issuer: "IBM",
+        year: "2024",
+        iconUrl: ibmIcon,
+        link: "https://coursera.org/share/6ab02b5ad819d55b790d13dc652d4d16",
     },
     {
-        title: "The Complete Python Bootcamp",
-        issuer: "NPTEL / Udemy",
-        year: "2023",
-        icon: "🐍",
-        link: "#",
+        title: "Red Hat System Administration I",
+        issuer: "Red Hat Academy",
+        year: "2024",
+        iconUrl: redHatIcon,
+        link: "https://www.credly.com/badges/bdcdda41-65ec-4df6-bea6-1e57a6395761",
     },
-];
-
-const achievements = [
-    { title: "Smart India Hackathon — Participant", year: "2024", icon: "🏆" },
-    { title: "College Coding Fest — 2nd Place", year: "2023", icon: "🥈" },
 ];
 
 export default function Certifications() {
@@ -42,13 +41,10 @@ export default function Certifications() {
         <section className="certifications section" id="certifications">
             <div className="container">
                 <div className="section-title" data-aos="fade-up">
-                    <h2>Certifications & Achievements</h2>
-                    <p>Credentials and milestones I've earned</p>
+                    <h2>Certifications</h2>
+                    <p>Credentials I've earned</p>
                 </div>
 
-                <h3 className="certifications__sub-heading" data-aos="fade-up">
-                    📜 Certifications
-                </h3>
                 <div className="certifications__grid">
                     {certifications.map((cert, i) => (
                         <motion.a
@@ -57,42 +53,28 @@ export default function Certifications() {
                             target="_blank"
                             rel="noopener noreferrer"
                             id={`cert-${i}`}
-                            className="cert-card card"
-                            initial={{ opacity: 0, y: 20 }}
+                            className="cert-card-modern"
+                            initial={{ opacity: 0, y: 30 }}
                             whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ duration: 0.5, delay: i * 0.1 }}
-                            whileHover={{ scale: 1.02 }}
+                            viewport={{ once: true, margin: "-50px" }}
+                            transition={{ duration: 0.6, delay: i * 0.15, type: "spring", stiffness: 90 }}
+                            whileHover={{ y: -6 }}
                         >
-                            <span className="cert-card__icon">{cert.icon}</span>
-                            <div>
-                                <h4 className="cert-card__title">{cert.title}</h4>
-                                <p className="cert-card__issuer">{cert.issuer}</p>
-                                <span className="cert-card__year badge">{cert.year}</span>
+                            <div className="cert-card-modern__glow"></div>
+                            <div className="cert-card-modern__content">
+                                <div className="cert-card-modern__header">
+                                    <div className="cert-card-modern__icon-box">
+                                        <img src={cert.iconUrl} alt={cert.issuer} className="cert-card-modern__icon-img" />
+                                    </div>
+                                    <span className="cert-card-modern__year badge">{cert.year}</span>
+                                </div>
+                                <h4 className="cert-card-modern__title">{cert.title}</h4>
+                                <p className="cert-card-modern__issuer">{cert.issuer}</p>
+                                <div className="cert-card-modern__footer">
+                                    <span className="cert-card-modern__action">Verify Credential ↗</span>
+                                </div>
                             </div>
                         </motion.a>
-                    ))}
-                </div>
-
-                <h3 className="certifications__sub-heading" data-aos="fade-up" style={{ marginTop: "3rem" }}>
-                    🏅 Achievements
-                </h3>
-                <div className="achievements__list">
-                    {achievements.map((ach, i) => (
-                        <motion.div
-                            key={ach.title}
-                            className="achievement-item card"
-                            initial={{ opacity: 0, x: -20 }}
-                            whileInView={{ opacity: 1, x: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ duration: 0.5, delay: i * 0.1 }}
-                        >
-                            <span className="achievement-item__icon">{ach.icon}</span>
-                            <div>
-                                <p className="achievement-item__title">{ach.title}</p>
-                                <span className="achievement-item__year">{ach.year}</span>
-                            </div>
-                        </motion.div>
                     ))}
                 </div>
             </div>

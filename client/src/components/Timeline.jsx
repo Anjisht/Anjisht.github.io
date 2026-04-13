@@ -88,29 +88,32 @@ export default function Timeline() {
                             viewport={{ once: true, margin: "-100px" }}
                             transition={{ type: "spring", stiffness: 60, damping: 15, delay: i * 0.15 }}
                         >
-                            <div className="timeline__content card">
-                                <div className="timeline__type badge">{item.type}</div>
-                                <h3 className="timeline__title">{item.title}</h3>
-                                <p className="timeline__org">{item.org}</p>
-                                <p className="timeline__period">{item.period}</p>
-                                {item.desc && <p className="timeline__desc">{item.desc}</p>}
-                                {item.courses && (
-                                    <div className="timeline__courses">
-                                        {item.courses.map((course, idx) => (
-                                            <span key={idx} className="timeline__course-badge">{course}</span>
-                                        ))}
-                                    </div>
-                                )}
-                                {item.highlights && (
-                                    <ul className="timeline__highlights">
-                                        {item.highlights.map((highlight, idx) => (
-                                            <li key={idx}>
-                                                <span className="timeline__bullet">▹</span>
-                                                <span>{highlight}</span>
-                                            </li>
-                                        ))}
-                                    </ul>
-                                )}
+                            <div className="timeline__content timeline-card-modern">
+                                <div className="timeline-card-modern__glow"></div>
+                                <div className="timeline-card-modern__content-wrap">
+                                    <div className="timeline__type badge">{item.type}</div>
+                                    <h3 className="timeline__title">{item.title}</h3>
+                                    <p className="timeline__org">{item.org}</p>
+                                    <p className="timeline__period">{item.period}</p>
+                                    {item.desc && <p className="timeline__desc">{item.desc}</p>}
+                                    {item.courses && (
+                                        <div className="timeline__courses">
+                                            {item.courses.map((course, idx) => (
+                                                <span key={idx} className="timeline__course-badge">{course}</span>
+                                            ))}
+                                        </div>
+                                    )}
+                                    {item.highlights && (
+                                        <ul className="timeline__highlights">
+                                            {item.highlights.map((highlight, idx) => (
+                                                <li key={idx}>
+                                                    <span className="timeline__bullet">▹</span>
+                                                    <span>{highlight}</span>
+                                                </li>
+                                            ))}
+                                        </ul>
+                                    )}
+                                </div>
                             </div>
                         </motion.div>
                     ))}
