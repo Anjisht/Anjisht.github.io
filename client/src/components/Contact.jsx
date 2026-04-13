@@ -11,7 +11,7 @@ export default function Contact() {
         setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
     };
 
-    const API_URL = import.meta.env.VITE_API_URL || "";
+    const API_URL = import.meta.env.PROD ? "https://anjisht-github-io.onrender.com" : "";
 
     const handleSubmit = async (e) => {
         e.preventDefault();

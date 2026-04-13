@@ -4,7 +4,7 @@ import Prism from "./Prism.jsx";
 import "./Hero.css";
 
 export default function Hero() {
-    const API_URL = import.meta.env.VITE_API_URL || "";
+    const API_URL = import.meta.env.PROD ? "https://anjisht-github-io.onrender.com" : "";
 
     const downloadCV = (format) => {
         window.open(`${API_URL}/api/cv/${format}`, "_blank");
