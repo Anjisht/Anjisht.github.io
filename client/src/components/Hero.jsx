@@ -56,7 +56,7 @@ export default function Hero() {
                     </h2>
 
                     <p className="hero__bio">
-                        I like machine learning, mathematics, and web development. I'm a prefinal year undergraduate student studying CS at JKLU, Jaipur.
+                        I like Machine learning, Mathematics, and Web Development. I am a pre-final year undergraduate student pursuing a B.Tech in Computer Science and Engineering at JKLU, Jaipur.
                     </p>
 
                     <div className="hero__cta">
