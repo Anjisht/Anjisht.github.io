@@ -9,14 +9,14 @@ const certifications = [
     {
         title: "Neural Network and Deep Learning",
         issuer: "DeepLearning.AI",
-        year: "2024",
+        year: "2025",
         iconUrl: deepLearningIcon,
         link: "https://coursera.org/share/93d015423ff78017d5f449bf2717ca6f",
     },
     {
         title: "Python Data Structures",
         issuer: "University of Michigan",
-        year: "2024",
+        year: "2023",
         iconUrl: uMichiganIcon,
         link: "https://coursera.org/share/0a7193ba16b496f49b2c091df69a2814",
     },
@@ -30,7 +30,7 @@ const certifications = [
     {
         title: "Red Hat System Administration I",
         issuer: "Red Hat Academy",
-        year: "2024",
+        year: "2025",
         iconUrl: redHatIcon,
         link: "https://www.credly.com/badges/bdcdda41-65ec-4df6-bea6-1e57a6395761",
     },
