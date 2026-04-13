@@ -80,14 +80,4 @@ cd client && npm run dev
 
 Visit `http://localhost:5173`
 
-## 📄 CV Download
 
-PDF and DOCX versions of the resume are served via the Express backend at:
-- `GET /api/cv/pdf`
-- `GET /api/cv/docx`
-
-Place your actual CV files in `server/uploads/` named `resume.pdf` and `resume.docx`.
-
-## ⚠️ Security
-
-Never push `.env` to GitHub. The `.gitignore` already excludes it.
